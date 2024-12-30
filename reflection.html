@@ -3,331 +3,771 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Algorithms and Data Structures</title>
+    <title>Course Learning Reflection - Algorithms and Data Structures</title>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 2rem;
             background-color: #f5f5f5;
+            text-align: left;
+        }
+        h1, h2 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        p {
+            color: #333;
             line-height: 1.6;
         }
-        h1 {
-            color: #4CAF50;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-        h2 {
-            color: #333;
-            margin-top: 1.5rem;
-        }
-        h3 {
-            color: #4CAF50;
-            margin-top: 1rem;
-        }
-        p, li {
-            color: #333;
-        }
         ul {
-            margin-left: 1.5rem;
+            margin-left: 20px;
         }
-        pre {
-            background-color: #e7f7e7;
-            padding: 1rem;
+        li {
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 2rem;
+        }
+        .code {
+            background-color: #f0f0f0;
+            padding: 10px;
             border-radius: 5px;
-            overflow-x: auto;
-        }
-        code {
-            color: #d63384;
+            font-family: 'Courier New', Courier, monospace;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
-    <h1>Algorithms and Data Structures</h1>
+    <h1>Course Learning Reflection</h1>
+    <p>This page contains my reflections on the course. Here's what I learned:</p>
 
-    <h2>Space and Time Efficiency</h2>
-    <p>Understanding space and time efficiency is crucial in computer science. It helps optimize resources while solving problems.</p>
+    <!-- Algorithms and Data Structures Section -->
+    <div class="section">
+        <h2>Algorithms and Data Structures</h2>
+        <p>Throughout the course, I learned about the importance of selecting the right algorithms and data structures for problem-solving. Below is a summary of key concepts related to time and space efficiency in algorithms:</p>
 
-    <h3>Importance of Time Complexity</h3>
-    <p>Time complexity measures the amount of time an algorithm takes to complete based on input size. Efficient algorithms save processing time and are scalable.</p>
+        <h3>Space and Time Efficiency</h3>
+        <p>Optimizing the space and time complexity of algorithms is essential in developing scalable and efficient software. Space complexity refers to the amount of memory an algorithm uses, while time complexity describes how the runtime increases with the size of the input.</p>
 
-    <h3>Orders of Growth</h3>
-    <p>The growth rate of an algorithm is classified using Big-O notation. Common complexities include:</p>
+        <h3>Importance of Time Complexity</h3>
+        <p>Understanding time complexity is critical in choosing algorithms that perform well as the input size grows. Algorithms with lower time complexities scale better, ensuring systems remain fast and responsive as data increases.</p>
+
+        <h3>Orders of Growth</h3>
+        <p>The <b>order of growth</b> defines how the execution time or memory consumption of an algorithm increases with the size of its input. It helps in analyzing the efficiency of an algorithm and comparing the scalability of different algorithms. Here are the common orders of growth:</p>
+        <ul>
+            <li><b>Constant Time - O(1)</b>: The algorithm's runtime does not depend on the size of the input.</li>
+            <li><b>Logarithmic Time - O(log n)</b>: The algorithm's runtime grows logarithmically with the input size. Common in algorithms that divide the problem in half each time (e.g., binary search).</li>
+            <li><b>Linear Time - O(n)</b>: The algorithm's runtime grows linearly with the input size. An example is iterating through an array.</li>
+            <li><b>Linearithmic Time - O(n log n)</b>: The algorithm's runtime grows faster than linear but slower than quadratic. An example is efficient sorting algorithms like Merge Sort and Quick Sort.</li>
+            <li><b>Quadratic Time - O(n²)</b>: The algorithm's runtime grows quadratically with the input size. A typical example is the brute-force solution for sorting or searching in two-dimensional data.</li>
+            <li><b>Cubic Time - O(n³)</b>: The runtime grows cubically with the input size. This is common in algorithms dealing with three nested loops.</li>
+            <li><b>Exponential Time - O(2ⁿ)</b>: The runtime doubles with each additional input element. Exponential time algorithms are highly inefficient for large inputs, commonly found in recursive algorithms without memoization.</li>
+            <li><b>Factorial Time - O(n!)</b>: The runtime grows factorially, seen in problems that involve generating all permutations of a set of elements (e.g., the traveling salesman problem).</li>
+        </ul>
+
+        <h3>Asymptotic Notations</h3>
+        <p>Asymptotic notations provide a way to describe the performance of an algorithm in terms of its input size. These include:</p>
+        <ul>
+            <li><b>Ω (Omega) Notation</b>: Represents a lower bound on the function, showing the best-case scenario for an algorithm. This helps to guarantee that the algorithm will never take less time than a certain threshold.</li>
+            <li><b>O (Big O) Notation</b>: Describes the upper bound of a function, giving the worst-case scenario. It indicates the maximum time an algorithm will take in the worst case.</li>
+            <li><b>θ (Theta) Notation</b>: Provides a tight bound, meaning the function's growth rate is sandwiched between the upper and lower bounds. It indicates the average-case scenario, where both upper and lower bounds are within constant factors.</li>
+        </ul>
+
+        <h3>Asymptotic Notations for Algorithms</h3>
+        <p>In the context of algorithms, we use asymptotic notations to characterize their performance under different conditions:</p>
+        <ul>
+            <li><b>Θ – Average Case</b>: Represents the expected performance of an algorithm over a wide range of inputs.</li>
+            <li><b>O – Worst Case</b>: Describes the worst possible runtime, often used to ensure an algorithm is efficient even in the most challenging scenarios.</li>
+            <li><b>Ω – Best Case</b>: Represents the best-case scenario for an algorithm, providing a lower bound on the performance.</li>
+        </ul>
+
+        <h3>Iteration, Recursion, and Backtracking</h3>
+        <p>Three important techniques for solving problems include:</p>
+        <ul>
+            <li><b>Iteration</b>: Involves repeating a process using loops. Example: Calculating the sum of a list of numbers.</li>
+            <div class="code">
+                <pre>sum = 0
+for number in numbers:
+    sum += number</pre>
+            </div>
+            <li><b>Recursion</b>: A function calls itself to solve smaller instances of the same problem. Example: Calculating the factorial of a number.</li>
+            <div class="code">
+                <pre>def factorial(n):
+    if n == 0:
+        return 1
+    return n * factorial(n-1)</pre>
+            </div>
+            <li><b>Backtracking</b>: Involves solving a problem incrementally and undoing decisions when a solution is not feasible. Example: Solving a maze or the N-Queens problem.</li>
+        </ul>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Learning Reflection - Algorithms and Data Structures</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 2rem;
+            background-color: #f5f5f5;
+            text-align: left;
+        }
+        h1, h2 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        p {
+            color: #333;
+            line-height: 1.6;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 2rem;
+        }
+        .code {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Course Learning Reflection</h1>
+    <p>This page contains my reflections on the course. Here's what I learned:</p>
+
+    <!-- Binary Search Tree Section -->
+    <div class="section">
+        <h2>Binary Search Tree (BST)</h2>
+        <p>A Binary Search Tree (BST) is a data structure where each node has at most two children, typically referred to as the left and right child. The left child contains a value less than its parent node, and the right child contains a value greater than its parent. This property allows for efficient search, insertion, and deletion operations.</p>
+
+        <h3>Insertion in BST</h3>
+        <p>The insertion process starts by comparing the new value with the root. If the value is smaller, we go to the left child; if it's larger, we go to the right child. This continues recursively until an empty spot is found to insert the new node.</p>
+        <div class="code">
+            <pre>
+TREE* BinarySearchTree::insert_into_bst(TREE* root, int data) {
+    TREE* newnode = (TREE*)malloc(sizeof(TREE));
+    if (newnode == NULL) {
+        cout << "Memory allocation failed" << endl;
+        return root;
+    }
+    newnode->data = data;
+    newnode->left = NULL;
+    newnode->right = NULL;
+    if (root == NULL) {
+        root = newnode;
+        cout << "Root node inserted into tree" << endl;
+        return root;
+    }
+    TREE* currnode = root;
+    TREE* parent = NULL;
+    while (currnode != NULL) {
+        parent = currnode;
+        if (newnode->data < currnode->data)
+            currnode = currnode->left;
+        else
+            currnode = currnode->right;
+    }
+    if (newnode->data < parent->data)
+        parent->left = newnode;
+    else
+        parent->right = newnode;
+    cout << "Node inserted successfully into the tree" << endl;
+    return root;
+}
+            </pre>
+        </div>
+
+        <h3>Deletion in BST</h3>
+        <p>The deletion process in a BST involves three cases:
+            <ul>
+                <li>Deleting a node with no children (leaf node)</li>
+                <li>Deleting a node with one child</li>
+                <li>Deleting a node with two children</li>
+            </ul>
+            When deleting a node with two children, we find the inorder successor (the smallest node in the right subtree) and replace the node with it.
+        </p>
+        <div class="code">
+            <pre>
+TREE* BinarySearchTree::delete_from_bst(TREE* root, int data) {
+    TREE* currnode = root;
+    TREE* parent = NULL;
+    TREE* successor = NULL;
+    TREE* p = NULL;
+    if (root == NULL) {
+        cout << "Tree is empty" << endl;
+        return root;
+    }
+    while (currnode != NULL && currnode->data != data) {
+        parent = currnode;
+        if (data < currnode->data)
+            currnode = currnode->left;
+        else
+            currnode = currnode->right;
+    }
+    if (currnode == NULL) {
+        cout << "Item not found" << endl;
+        return root;
+    }
+    if (currnode->left == NULL)
+        p = currnode->right;
+    else if (currnode->right == NULL)
+        p = currnode->left;
+    else {
+        successor = currnode->right;
+        while (successor->left != NULL)
+            successor = successor->left;
+        successor->left = currnode->left;
+        p = currnode->right;
+    }
+    if (parent == NULL) {
+        free(currnode);
+        return p;
+    }
+    if (currnode == parent->left)
+        parent->left = p;
+    else
+        parent->right = p;
+    free(currnode);
+    return root;
+}
+            </pre>
+        </div>
+
+        <h3>Inorder Traversal</h3>
+        <p>Inorder traversal of a BST visits the nodes in ascending order. The algorithm visits the left subtree, the current node, and then the right subtree.</p>
+        <div class="code">
+            <pre>
+void BinarySearchTree::inorder(TREE* root) {
+    if (root != NULL) {
+        inorder(root->left);
+        cout << root->data << "\t";
+        inorder(root->right);
+    }
+}
+            </pre>
+        </div>
+        <p>In the provided code, this traversal function is implemented recursively. It first calls the inorder function on the left child, then prints the data of the current node, and finally calls the inorder function on the right child.</p>
+    </div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Learning Reflection - Advanced Data Structures</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 2rem;
+            background-color: #f5f5f5;
+            text-align: left;
+        }
+        h1, h2 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        p {
+            color: #333;
+            line-height: 1.6;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 2rem;
+        }
+        .code {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Course Learning Reflection - Advanced Data Structures</h1>
+
+    <!-- AVL Tree Section -->
+    <div class="section">
+        <h2>AVL Tree</h2>
+        <p>An AVL tree is a self-balancing binary search tree, where the difference in heights between left and right subtrees cannot be more than one. The tree performs rotations (left or right) to maintain balance after insertions and deletions, ensuring logarithmic time complexity for search operations.</p>
+        <ul>
+            <li>Ensures efficient search, insertion, and deletion in O(log n) time.</li>
+            <li>Used when quick lookups, insertions, and deletions are needed while maintaining balanced performance.</li>
+        </ul>
+    </div>
+
+    <!-- Red-Black Tree Section -->
+    <div class="section">
+        <h2>Red-Black Tree</h2>
+        <p>A red-black tree is a type of self-balancing binary search tree where each node has an extra bit for determining the color (red or black). The tree balances itself by following certain properties and rules to maintain logarithmic height, providing efficient search, insertion, and deletion.</p>
+        <ul>
+            <li>Red-black trees provide O(log n) time complexity for search, insertion, and deletion.</li>
+            <li>It is less strict in balancing compared to AVL trees but easier to implement.</li>
+        </ul>
+    </div>
+
+    <!-- Fenwick Tree Section -->
+    <div class="section">
+        <h2>Fenwick Tree (Binary Indexed Tree)</h2>
+        <p>The Fenwick tree (or Binary Indexed Tree) is a data structure that provides efficient methods for querying and updating prefix sums in a sequence of numbers. It allows both updates and queries to be performed in O(log n) time.</p>
+        <ul>
+            <li>Used for cumulative frequency tables and prefix sum queries.</li>
+            <li>Operations are efficient, with both update and query in O(log n) time.</li>
+        </ul>
+    </div>
+
+    <!-- Trie Section -->
+    <div class="section">
+        <h2>Trie</h2>
+        <p>A Trie is a tree-like data structure used for storing strings. It provides efficient searching, inserting, and deleting operations based on the individual characters of the strings. Tries are especially useful in situations where you need to perform multiple prefix-based queries.</p>
+        <ul>
+            <li>Used for autocomplete systems, spell checking, and IP routing.</li>
+            <li>Enables fast prefix-based search with a time complexity of O(m), where m is the length of the string.</li>
+        </ul>
+    </div>
+
+    <!-- Skip List Section -->
+    <div class="section">
+        <h2>Skip List</h2>
+        <p>A skip list is a probabilistic data structure that allows for fast search, insertion, and deletion operations. It consists of multiple layers of linked lists, where each higher layer skips over multiple elements in the lower layers. The search time complexity is O(log n) on average.</p>
+        <ul>
+            <li>Skip lists are an alternative to balanced trees and can be simpler to implement.</li>
+            <li>Used for ordered set and range queries.</li>
+        </ul>
+    </div>
+
+    <!-- Range Queries Section -->
+    <div class="section">
+        <h2>Range Queries</h2>
+        <p>Range queries involve querying for a specific subset or range of values in a data structure, like finding the sum or maximum of elements within a given range. Data structures like segment trees and Fenwick trees are commonly used for efficient range queries.</p>
+        <ul>
+            <li>Segment trees and Fenwick trees are commonly used to handle range queries efficiently.</li>
+            <li>Provides solutions for range minimum/maximum queries, range sum queries, and more.</li>
+        </ul>
+    </div>
+
+    <!-- Hashing Section -->
+    <div class="section">
+        <h2>Hashing</h2>
+        <p>Hashing is a technique used to map data to fixed-size values (hash codes). It allows for fast data retrieval in constant time on average. A hash table uses a hash function to compute an index in a table, where the data is stored.</p>
+        <ul>
+            <li>Hashing is widely used in data structures like hash maps and hash sets.</li>
+            <li>It ensures O(1) average-time complexity for lookups, insertions, and deletions.</li>
+        </ul>
+    </div>
+
+    <!-- Heap Section -->
+    <div class="section">
+        <h2>Heap</h2>
+        <p>A heap is a complete binary tree where the parent node is either greater than or equal to its children (max heap) or less than or equal to its children (min heap). Heaps are often used to implement priority queues.</p>
+        <ul>
+            <li>Provides efficient methods for inserting, deleting, and finding the maximum (or minimum) element.</li>
+            <li>Heaps are used in algorithms like heapsort and for implementing priority queues.</li>
+        </ul>
+    </div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Learning Reflection - Sorting Algorithms</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 2rem;
+            background-color: #f5f5f5;
+            text-align: left;
+        }
+        h1, h2 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        p {
+            color: #333;
+            line-height: 1.6;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 2rem;
+        }
+        .code {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Course Learning Reflection - Sorting Algorithms</h1>
+
+    <!-- Bubble Sort Section -->
+    <div class="section">
+        <h2>Bubble Sort</h2>
+        <p>Bubble Sort is a simple comparison-based sorting algorithm where each pair of adjacent elements is compared and swapped if they are in the wrong order, repeatedly passing through the list until it is sorted.</p>
+        <pre class="code">
+ALGORITHM BubbleSort(A[0..n-1])
+for i ← 0 to n - 2 do
+    for j ← 0 to n - 2 - i do
+        if A[j+1] < A[j]
+            swap A[j] and A[j+1]
+        </pre>
+    </div>
+
+    <!-- Selection Sort Section -->
+    <div class="section">
+        <h2>Selection Sort</h2>
+        <p>Selection Sort works by repeatedly finding the minimum element from the unsorted part of the array and swapping it with the first unsorted element.</p>
+        <pre class="code">
+ALGORITHM SelectionSort(A[0..n-1])
+for i ← 0 to n - 2 do
+    min ← i
+    for j ← i + 1 to n - 1 do
+        if A[j] < A[min]
+            min ← j
+    swap A[i] and A[min]
+        </pre>
+    </div>
+
+    <!-- Insertion Sort Section -->
+    <div class="section">
+        <h2>Insertion Sort</h2>
+        <p>Insertion Sort builds the sorted array one element at a time by repeatedly picking the next element and placing it in the correct position within the already sorted part of the array.</p>
+        <pre class="code">
+ALGORITHM InsertionSort(A[0..n-1])
+for i ← 1 to n - 1 do
+    v ← A[i]
+    j ← i - 1
+    while j ≥ 0 and A[j] > v do
+        A[j + 1] ← A[j]
+        j ← j - 1
+    A[j + 1] ← v
+        </pre>
+    </div>
+
+    <!-- Merge Sort Section -->
+    <div class="section">
+        <h2>Merge Sort</h2>
+        <p>Merge Sort is a divide-and-conquer algorithm that divides the array into two halves, recursively sorts them, and then merges the sorted halves into a single sorted array.</p>
+        <pre class="code">
+ALGORITHM MergeSort(A[0..n-1])
+if n > 1
+    copy A[0..n/2 - 1] to B[0..n/2 - 1]
+    copy A[n/2..n-1] to C[0..n/2 - 1]
+    MergeSort(B)
+    MergeSort(C)
+    Merge(B, C, A)
+
+ALGORITHM Merge(B[0..p-1], C[0..q-1], A[0..p+q-1])
+i ← 0
+j ← 0
+k ← 0
+while i < p and j < q do
+    if B[i] <= C[j]
+        A[k] ← B[i]
+        i ← i + 1
+    else
+        A[k] ← C[j]
+        j ← j + 1
+    k ← k + 1
+if i = p
+    copy C[j..q-1] to A[k..p + q - 1]
+else
+    copy B[i..p-1] to A[k..p + q - 1]
+        </pre>
+    </div>
+
+    <!-- Quick Sort Section -->
+    <div class="section">
+        <h2>Quick Sort</h2>
+        <p>Quick Sort is a divide-and-conquer algorithm that works by selecting a pivot element and partitioning the array into two subarrays, recursively sorting the subarrays.</p>
+        <pre class="code">
+ALGORITHM QuickSort(A[l..r])
+if l < r
+    s ← Partition(A[l..r])
+    QuickSort(A[l..s - 1])
+    QuickSort(A[s + 1..r])
+
+ALGORITHM Partition(A[l..r])
+p ← A[l]
+i ← l
+j ← r + 1
+repeat
+    repeat i ← i + 1 until A[i] ≥ p
+    repeat j ← j - 1 until A[j] ≤ p
+    swap(A[i], A[j])
+until i ≥ j
+swap(A[i], A[j])
+swap(A[l], A[j])
+return j
+        </pre>
+    </div>
+
+    <!-- Heap Sort Section -->
+    <div class="section">
+        <h2>Heap Sort</h2>
+        <p>Heap Sort first builds a heap from the input array and then repeatedly extracts the maximum (or minimum) element, rebuilding the heap each time, to produce a sorted array.</p>
+        <pre class="code">
+ALGORITHM HeapBottomUp(H[1..n])
+for i ← n / 2 downto 1 do
+    k ← i
+    v ← H[k]
+    heap ← false
+    while not heap and 2 * k <= n do
+        j ← 2 * k
+        if j < n
+            if H[j] < H[j + 1]
+                j ← j + 1
+        if v >= H[j]
+            heap ← true
+        else
+            H[k] ← H[j]
+            k ← j
+    H[k] ← v
+        </pre>
+    </div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Algorithms Overview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        section {
+            margin-bottom: 30px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        pre {
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Overview of Algorithms</h1>
+
+    <section>
+        <h2>Sorting Algorithms</h2>
+
+        <h3>Bubble Sort</h3>
+        <pre>
+ALGORITHM BubbleSort(A[0..n-1])
+for i ← 0 to n - 2 do
+    for j ← 0 to n - 2 - i do
+        if A[j+1] < A[j]
+            swap A[j] and A[j+1]
+        </pre>
+
+        <h3>Selection Sort</h3>
+        <pre>
+ALGORITHM SelectionSort(A[0..n-1])
+for i ← 0 to n - 2 do
+    min ← i
+    for j ← i + 1 to n - 1 do
+        if A[j] < A[min]
+            min ← j
+    swap A[i] and A[min]
+        </pre>
+
+        <h3>Insertion Sort</h3>
+        <pre>
+ALGORITHM InsertionSort(A[0..n-1])
+for i ← 1 to n - 1 do
+    v ← A[i]
+    j ← i - 1
+    while j >= 0 and A[j] > v do
+        A[j + 1] ← A[j]
+        j ← j - 1
+    A[j + 1] ← v
+        </pre>
+
+        <h3>Merge Sort</h3>
+        <pre>
+ALGORITHM MergeSort(A[0..n-1])
+if n > 1
+    split A into two halves B and C
+    MergeSort(B)
+    MergeSort(C)
+    Merge(B, C, A)
+        </pre>
+
+        <h3>Quick Sort</h3>
+        <pre>
+ALGORITHM QuickSort(A[l...r])
+if l < r
+    s ← Partition(A[l...r])
+    QuickSort(A[l...s-1])
+    QuickSort(A[s+1...r])
+        </pre>
+
+        <h3>Heap Sort</h3>
+        <pre>
+Step 1: Construct a heap
+Step 2: Perform root-deletion operation repeatedly
+ALGORITHM HeapBottomUp(H[1..n])
+for i ← ⌊n/2⌋ downto 1 do
+    adjust heap structure
+        </pre>
+    </section>
+
+    <section>
+        <h2>String Matching Algorithms</h2>
+
+        <h3>Brute Force String Matching</h3>
+        <pre>
+ALGORITHM BruteForceStringMatch(T[0...n-1], P[0...m-1])
+for i ← 0 to n - m do
+    j ← 0
+    while j < m and P[j] = T[i+j] do
+        j ← j + 1
+    if j = m
+        return i
+return -1
+        </pre>
+
+        <h3>Boyer Moore Algorithm</h3>
+        <p>Constructs bad symbol shift and good suffix shift tables for efficient string matching.</p>
+
+        <h3>Knuth-Morris-Pratt Algorithm</h3>
+        <p>Uses prefix tables to efficiently find substrings, with worst-case efficiency of O(m + n).</p>
+    </section>
+
+    <section>
+        <h2>Graph Algorithms</h2>
+
+        <h3>Dijkstra's Algorithm</h3>
+        <pre>
+ALGORITHM Dijkstra(G, s)
+Initialize distances to ∞ and priority queue
+for every vertex v in V do
+    calculate shortest path using edge relaxation
+        </pre>
+
+        <h3>Floyd's Algorithm</h3>
+        <pre>
+ALGORITHM Floyd(W[1..n,1..n])
+for k ← 1 to n do
+    for i ← 1 to n do
+        for j ← 1 to n do
+            D[i, j] ← min(D[i, j], D[i, k] + D[k, j])
+        </pre>
+
+        <h3>Warshall's Algorithm</h3>
+        <pre>
+ALGORITHM Warshall(A[1..n,1..n])
+for k ← 1 to n do
+    for i ← 1 to n do
+        for j ← 1 to n do
+            R[i, j] ← R[i, j] or (R[i, k] and R[k, j])
+        </pre>
+
+        <h3>Kruskal's Algorithm</h3>
+        <pre>
+ALGORITHM Kruskal(G)
+Sort edges by weight
+for each edge e in sorted order
+    if adding e does not form a cycle
+        add e to MST
+        </pre>
+
+        <h3>Prim's Algorithm</h3>
+        <pre>
+ALGORITHM Prim(G)
+Start with a vertex, grow the MST by adding minimum weight edges
+        </pre>
+
+        <h3>Bellman-Ford Algorithm</h3>
+        <p>Finds shortest paths from a single source using edge relaxation with time complexity O(|V| |E|).</p>
+    </section>
+
+    <section>
+        <h2>Algorithm Design Techniques</h2>
+
+        <h3>Brute Force</h3>
+        <p>Exhaustively tries all possible solutions to find the correct one.</p>
+
+        <h3>Divide and Conquer</h3>
+        <p>Divides a problem into smaller sub-problems, solves them recursively, and combines results.</p>
+
+        <h3>Dynamic Programming</h3>
+        <p>Stores results of overlapping sub-problems to optimize computation.</p>
+
+        <h3>Greedy Technique</h3>
+        <p>Makes locally optimal choices at each step to find a global solution.</p>
+
+        <h3>Backtracking</h3>
+        <p>Builds solutions incrementally and abandons solutions that fail to satisfy constraints.</p>
+    </section>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Outcomes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        ul {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <h1>Learning Outcomes</h1>
     <ul>
-        <li>O(1): Constant time</li>
-        <li>O(log n): Logarithmic time</li>
-        <li>O(n): Linear time</li>
-        <li>O(n log n): Linearithmic time</li>
-        <li>O(n^2): Quadratic time</li>
-        <li>O(2^n): Exponential time</li>
+        <li><strong>Algorithm Fundamentals:</strong> Understand the core concepts and working of various sorting, searching, and graph algorithms.</li>
+        <li><strong>Design Techniques:</strong> Gain knowledge of algorithm design paradigms such as Divide and Conquer, Greedy, and Dynamic Programming.</li>
+        <li><strong>Efficiency Analysis:</strong> Learn to analyze time and space complexities to choose the most efficient algorithm for a given problem.</li>
+        <li><strong>Practical Application:</strong> Apply graph algorithms (Dijkstra, Prim, Kruskal) and string matching techniques (KMP, Boyer-Moore) to real-world scenarios like navigation, network design, and text searching.</li>
+        <li><strong>Comparison Skills:</strong> Develop the ability to compare and contrast algorithms based on their performance, use cases, and limitations.</li>
+        <li><strong>Problem Solving:</strong> Enhance problem-solving abilities by understanding and implementing various algorithmic strategies.</li>
     </ul>
-
-    <h2>Sorting Algorithms</h2>
-
-    <h3>Bubble Sort</h3>
-    <pre><code>def bubble_sort(arr):
-    n = len(arr)
-    for i in range(n):
-        for j in range(0, n-i-1):
-            if arr[j] > arr[j+1]:
-                arr[j], arr[j+1] = arr[j+1], arr[j]
-</code></pre>
-
-    <h3>Insertion Sort</h3>
-    <pre><code>def insertion_sort(arr):
-    for i in range(1, len(arr)):
-        key = arr[i]
-        j = i - 1
-        while j >= 0 and key < arr[j]:
-            arr[j + 1] = arr[j]
-            j -= 1
-        arr[j + 1] = key
-</code></pre>
-
-    <h3>Selection Sort</h3>
-    <pre><code>def selection_sort(arr):
-    for i in range(len(arr)):
-        min_idx = i
-        for j in range(i+1, len(arr)):
-            if arr[j] < arr[min_idx]:
-                min_idx = j
-        arr[i], arr[min_idx] = arr[min_idx], arr[i]
-</code></pre>
-
-    <h3>Quick Sort</h3>
-    <pre><code>def quick_sort(arr):
-    if len(arr) <= 1:
-        return arr
-    pivot = arr[len(arr) // 2]
-    left = [x for x in arr if x < pivot]
-    middle = [x for x in arr if x == pivot]
-    right = [x for x in arr if x > pivot]
-    return quick_sort(left) + middle + quick_sort(right)
-</code></pre>
-
-    <h3>Merge Sort</h3>
-    <pre><code>def merge_sort(arr):
-    if len(arr) > 1:
-        mid = len(arr) // 2
-        L = arr[:mid]
-        R = arr[mid:]
-
-        merge_sort(L)
-        merge_sort(R)
-
-        i = j = k = 0
-        while i < len(L) and j < len(R):
-            if L[i] < R[j]:
-                arr[k] = L[i]
-                i += 1
-            else:
-                arr[k] = R[j]
-                j += 1
-            k += 1
-
-        while i < len(L):
-            arr[k] = L[i]
-            i += 1
-            k += 1
-
-        while j < len(R):
-            arr[k] = R[j]
-            j += 1
-            k += 1
-</code></pre>
-
-    <h3>Heap Sort</h3>
-    <pre><code>def heapify(arr, n, i):
-    largest = i
-    l = 2 * i + 1
-    r = 2 * i + 2
-
-    if l < n and arr[l] > arr[largest]:
-        largest = l
-
-    if r < n and arr[r] > arr[largest]:
-        largest = r
-
-    if largest != i:
-        arr[i], arr[largest] = arr[largest], arr[i]
-        heapify(arr, n, largest)
-
-def heap_sort(arr):
-    n = len(arr)
-    for i in range(n // 2 - 1, -1, -1):
-        heapify(arr, n, i)
-    for i in range(n-1, 0, -1):
-        arr[i], arr[0] = arr[0], arr[i]
-        heapify(arr, i, 0)
-</code></pre>
-
-    <h2>Graph Algorithms</h2>
-
-    <h3>Dijkstra's Algorithm</h3>
-    <p>Finds the shortest path from a source node to all other nodes in a weighted graph.</p>
-    <pre><code># Dijkstra's Algorithm Example
-import heapq
-
-def dijkstra(graph, start):
-    distances = {node: float('infinity') for node in graph}
-    distances[start] = 0
-    pq = [(0, start)]
-
-    while pq:
-        current_distance, current_node = heapq.heappop(pq)
-        if current_distance > distances[current_node]:
-            continue
-
-        for neighbor, weight in graph[current_node].items():
-            distance = current_distance + weight
-            if distance < distances[neighbor]:
-                distances[neighbor] = distance
-                heapq.heappush(pq, (distance, neighbor))
-
-    return distances
-</code></pre>
-
-    <h3>Other Graph Algorithms</h3>
-    <ul>
-        <li>Kruskal's Algorithm: Minimum spanning tree using edge sorting.</li>
-        <li>Warshall's Algorithm: All-pairs shortest path (dynamic programming).</li>
-        <li>Floyd's Algorithm: Another all-pairs shortest path method.</li>
-        <li>Prim's Algorithm: Minimum spanning tree using a greedy approach.</li>
-        <li>Bellman-Ford Algorithm: Shortest path in graphs with negative weights.</li>
-    </ul>
-
-    <h2>Tree Algorithms</h2>
-
-    <h3>Binary Search Tree (BST) Insertion</h3>
-    <pre><code>class Node:
-    def __init__(self, key):
-        self.left = None
-        self.right = None
-        self.value = key
-
-def insert(root, key):
-    if root is None:
-        return Node(key)
-    else:
-        if key < root.value:
-            root.left = insert(root.left, key)
-        else:
-            root.right = insert(root.right, key)
-    return root
-</code></pre>
-
-    <h2>Graph Traversal</h2>
-
-    <h3>Depth First Search (DFS)</h3>
-    <pre><code>def dfs(graph, start, visited=None):
-    if visited is None:
-        visited = set()
-    visited.add(start)
-    for neighbor in graph[start]:
-        if neighbor not in visited:
-            dfs(graph, neighbor, visited)
-    return visited
-</code></pre>
-
-    <h3>Breadth First Search (BFS)</h3>
-    <pre><code>from collections import deque
-
-def bfs(graph, start):
-    visited = set()
-    queue = deque([start])
-    visited.add(start)
-
-    while queue:
-        vertex = queue.popleft()
-        print(vertex, end=" ")
-
-        for neighbor in graph[vertex]:
-            if neighbor not in visited:
-                visited.add(neighbor)
-                queue.append(neighbor)
-</code></pre>
-
-    <h2>String Matching Algorithms</h2>
-
-    <h3>Brute Force String Matching</h3>
-    <pre><code>def brute_force_search(text, pattern):
-    n = len(text)
-    m = len(pattern)
-    for i in range(n - m + 1):
-        if text[i:i+m] == pattern:
-            return i
-    return -1
-</code></pre>
-
-    <h3>Knuth-Morris-Pratt (KMP) Algorithm</h3>
-    <pre><code>def KMPSearch(text, pattern):
-    lps = [0] * len(pattern)
-    j = 0
-
-    def computeLPSArray():
-        length = 0
-        i = 1
-        while i < len(pattern):
-            if pattern[i] == pattern[length]:
-                length += 1
-                lps[i] = length
-                i += 1
-            else:
-                if length != 0:
-                    length = lps[length - 1]
-                else:
-                    lps[i] = 0
-                    i += 1
-
-    computeLPSArray()
-
-    i = 0
-    while i < len(text):
-        if pattern[j] == text[i]:
-            i += 1
-            j += 1
-        if j == len(pattern):
-            return i - j
-        elif i < len(text) and pattern[j] != text[i]:
-            if j != 0:
-                j = lps[j - 1]
-            else:
-                i += 1
-    return -1
-</code></pre>
-
-    <h3>Boyer-Moore-Rabin-Carp Algorithm</h3>
-    <pre><code>def rabin_karp(text, pattern):
-    d = 256
-    q = 101
-    M = len(pattern)
-    N = len(text)
-    i = 0
-    j = 0
-    pattern_hash = 0
-    text_hash = 0
-    h = 1
-    for i in range(M - 1):
-        h = (h * d) % q
-
-    for i in range(M):
-        pattern_hash = (d * pattern_hash + ord(pattern[i])) % q
-        text_hash = (d * text_hash + ord(text[i])) % q
-
-    for i in range(N - M + 1):
-        if pattern_hash == text_hash:
-            for j in range(M):
-                if text[i + j] != pattern[j]:
-                    break
-            j += 1
-            if j == M:
-                return i
-        if i < N - M:
-            text_hash = (d * (text_hash - ord(text[i]) * h) + ord(text[i + M])) % q
-            if text_hash < 0:
-                text_hash += q
-    return -1
-</code></pre>
-
+    <p>These outcomes ensure a comprehensive understanding of algorithms for both academic and practical purposes.</p>
 </body>
 </html>
