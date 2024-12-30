@@ -3,32 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Learning Reflection</title>
+    <title>Algorithms and Data Structures</title>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 2rem;
             background-color: #f5f5f5;
-            text-align: center;
+            line-height: 1.6;
         }
         h1 {
             color: #4CAF50;
-            margin-bottom: 1rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
         }
-        p {
+        h2 {
             color: #333;
-            line-height: 1.6;
+            margin-top: 1.5rem;
+        }
+        h3 {
+            color: #4CAF50;
+            margin-top: 1rem;
+        }
+        p, li {
+            color: #333;
+        }
+        ul {
+            margin-left: 1.5rem;
+        }
+        pre {
+            background-color: #e7f7e7;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            color: #d63384;
         }
     </style>
 </head>
 <body>
-    <h1>Course Learning Reflection</h1>
-    <p>This page contains my reflections on the course. Here's what I learned:</p>
+    <h1>Algorithms and Data Structures</h1>
+
+    <h2>Space and Time Efficiency</h2>
+    <p>Understanding space and time efficiency is crucial in computer science. It helps optimize resources while solving problems.</p>
+
+    <h3>Importance of Time Complexity</h3>
+    <p>Time complexity measures the amount of time an algorithm takes to complete based on input size. Efficient algorithms save processing time and are scalable.</p>
+
+    <h3>Orders of Growth</h3>
+    <p>The growth rate of an algorithm is classified using Big-O notation. Common complexities include:</p>
     <ul>
-        <li>How to create and style web pages using HTML and CSS.</li>
-        <li>Organizing and linking assets for better project management.</li>
-        <li>Understanding responsive design for better user experience.</li>
+        <li>O(1): Constant time</li>
+        <li>O(log n): Logarithmic time</li>
+        <li>O(n): Linear time</li>
+        <li>O(n log n): Linearithmic time</li>
+        <li>O(n^2): Quadratic time</li>
+        <li>O(2^n): Exponential time</li>
+    </ul>
+
+    <h2>Sorting Algorithms</h2>
+
+    <h3>Bubble Sort</h3>
+    <pre><code>def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+</code></pre>
+
+    <h3>Insertion Sort</h3>
+    <pre><code>def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and key < arr[j]:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+</code></pre>
+
+    <h3>Selection Sort</h3>
+    <pre><code>def selection_sort(arr):
+    for i in range(len(arr)):
+        min_idx = i
+        for j in range(i+1, len(arr)):
+            if arr[j] < arr[min_idx]:
+                min_idx = j
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+</code></pre>
+
+    <h3>Quick Sort</h3>
+    <pre><code>def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr) // 2]
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    return quick_sort(left) + middle + quick_sort(right)
+</code></pre>
+
+    <h3>Merge Sort</h3>
+    <pre><code>def merge_sort(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        L = arr[:mid]
+        R = arr[mid:]
+
+        merge_sort(L)
+        merge_sort(R)
+
+        i = j = k = 0
+        while i < len(L) and j < len(R):
+            if L[i] < R[j]:
+                arr[k] = L[i]
+                i += 1
+            else:
+                arr[k] = R[j]
+                j += 1
+            k += 1
+
+        while i < len(L):
+            arr[k] = L[i]
+            i += 1
+            k += 1
+
+        while j < len(R):
+            arr[k] = R[j]
+            j += 1
+            k += 1
+</code></pre>
+
+    <h3>Heap Sort</h3>
+    <pre><code>def heapify(arr, n, i):
+    largest = i
+    l = 2 * i + 1
+    r = 2 * i + 2
+
+    if l < n and arr[l] > arr[largest]:
+        largest = l
+
+    if r < n and arr[r] > arr[largest]:
+        largest = r
+
+    if largest != i:
+        arr[i], arr[largest] = arr[largest], arr[i]
+        heapify(arr, n, largest)
+
+def heap_sort(arr):
+    n = len(arr)
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(arr, n, i)
+    for i in range(n-1, 0, -1):
+        arr[i], arr[0] = arr[0], arr[i]
+        heapify(arr, i, 0)
+</code></pre>
+
+    <h2>Graph Algorithms</h2>
+
+    <h3>Dijkstra's Algorithm</h3>
+    <p>Finds the shortest path from a source node to all other nodes in a weighted graph.</p>
+    <pre><code># Dijkstra's Algorithm Example
+import heapq
+
+def dijkstra(graph, start):
+    distances = {node: float('infinity') for node in graph}
+    distances[start] = 0
+    pq = [(0, start)]
+
+    while pq:
+        current_distance, current_node = heapq.heappop(pq)
+        if current_distance > distances[current_node]:
+            continue
+
+        for neighbor, weight in graph[current_node].items():
+            distance = current_distance + weight
+            if distance < distances[neighbor]:
+                distances[neighbor] = distance
+                heapq.heappush(pq, (distance, neighbor))
+
+    return distances
+</code></pre>
+
+    <h3>Other Graph Algorithms</h3>
+    <ul>
+        <li>Kruskal's Algorithm: Minimum spanning tree using edge sorting.</li>
+        <li>Warshall's Algorithm: All-pairs shortest path (dynamic programming).</li>
+        <li>Floyd's Algorithm: Another all-pairs shortest path method.</li>
+        <li>Prim's Algorithm: Minimum spanning tree using a greedy approach.</li>
+        <li>Bellman-Ford Algorithm: Shortest path in graphs with negative weights.</li>
     </ul>
 </body>
 </html>
