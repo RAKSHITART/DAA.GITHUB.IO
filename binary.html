@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Learning Reflection - Algorithms and Data Structures</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 2rem;
+            background-color: #f5f5f5;
+            text-align: left;
+        }
+        h1, h2 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        p {
+            color: #333;
+            line-height: 1.6;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 2rem;
+        }
+        .code {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Course Learning Reflection</h1>
+    <p>This page contains my reflections on the course. Here's what I learned:</p>
+
+    <!-- Binary Search Tree Section -->
+    <div class="section">
+        <h2>Binary Search Tree (BST)</h2>
+        <p>A Binary Search Tree (BST) is a data structure where each node has at most two children, typically referred to as the left and right child. The left child contains a value less than its parent node, and the right child contains a value greater than its parent. This property allows for efficient search, insertion, and deletion operations.</p>
+
+        <h3>Insertion in BST</h3>
+        <p>The insertion process starts by comparing the new value with the root. If the value is smaller, we go to the left child; if it's larger, we go to the right child. This continues recursively until an empty spot is found to insert the new node.</p>
+        <div class="code">
+            <pre>
+TREE* BinarySearchTree::insert_into_bst(TREE* root, int data) {
+    TREE* newnode = (TREE*)malloc(sizeof(TREE));
+    if (newnode == NULL) {
+        cout << "Memory allocation failed" << endl;
+        return root;
+    }
+    newnode->data = data;
+    newnode->left = NULL;
+    newnode->right = NULL;
+    if (root == NULL) {
+        root = newnode;
+        cout << "Root node inserted into tree" << endl;
+        return root;
+    }
+    TREE* currnode = root;
+    TREE* parent = NULL;
+    while (currnode != NULL) {
+        parent = currnode;
+        if (newnode->data < currnode->data)
+            currnode = currnode->left;
+        else
+            currnode = currnode->right;
+    }
+    if (newnode->data < parent->data)
+        parent->left = newnode;
+    else
+        parent->right = newnode;
+    cout << "Node inserted successfully into the tree" << endl;
+    return root;
+}
+            </pre>
+        </div>
+
+        <h3>Deletion in BST</h3>
+        <p>The deletion process in a BST involves three cases:
+            <ul>
+                <li>Deleting a node with no children (leaf node)</li>
+                <li>Deleting a node with one child</li>
+                <li>Deleting a node with two children</li>
+            </ul>
+            When deleting a node with two children, we find the inorder successor (the smallest node in the right subtree) and replace the node with it.
+        </p>
+        <div class="code">
+            <pre>
+TREE* BinarySearchTree::delete_from_bst(TREE* root, int data) {
+    TREE* currnode = root;
+    TREE* parent = NULL;
+    TREE* successor = NULL;
+    TREE* p = NULL;
+    if (root == NULL) {
+        cout << "Tree is empty" << endl;
+        return root;
+    }
+    while (currnode != NULL && currnode->data != data) {
+        parent = currnode;
+        if (data < currnode->data)
+            currnode = currnode->left;
+        else
+            currnode = currnode->right;
+    }
+    if (currnode == NULL) {
+        cout << "Item not found" << endl;
+        return root;
+    }
+    if (currnode->left == NULL)
+        p = currnode->right;
+    else if (currnode->right == NULL)
+        p = currnode->left;
+    else {
+        successor = currnode->right;
+        while (successor->left != NULL)
+            successor = successor->left;
+        successor->left = currnode->left;
+        p = currnode->right;
+    }
+    if (parent == NULL) {
+        free(currnode);
+        return p;
+    }
+    if (currnode == parent->left)
+        parent->left = p;
+    else
+        parent->right = p;
+    free(currnode);
+    return root;
+}
+            </pre>
+        </div>
+
+        <h3>Inorder Traversal</h3>
+        <p>Inorder traversal of a BST visits the nodes in ascending order. The algorithm visits the left subtree, the current node, and then the right subtree.</p>
+        <div class="code">
+            <pre>
+void BinarySearchTree::inorder(TREE* root) {
+    if (root != NULL) {
+        inorder(root->left);
+        cout << root->data << "\t";
+        inorder(root->right);
+    }
+}
+            </pre>
+        </div>
+        <p>In the provided code, this traversal function is implemented recursively. It first calls the inorder function on the left child, then prints the data of the current node, and finally calls the inorder function on the right child.</p>
+    </div>
+
+    <!-- Binary Search Tree Challenges & Approach Section -->
+    <div class="section">
+        <h2>Binary Search Tree (BST) - Challenges & Approach</h2>
+
+        <h3>1. Challenges in Understanding BST</h3>
+        <ul>
+            <li><b>Conceptualization</b>: Visualizing the hierarchical structure of a BST can be difficult.</li>
+            <li><b>Balancing</b>: Keeping the tree balanced for optimal performance (e.g., AVL or Red-Black trees) is challenging.</li>
+            <li><b>Recursive Nature</b>: Operations like insertion and deletion are recursive, which can be hard for beginners to grasp.</li>
+        </ul>
+
+        <h3>2. Challenges in Real-World Applications</h3>
+        <ul>
+            <li><b>Imbalanced Trees</b>: BSTs can become unbalanced, affecting performance.</li>
+            <li><b>Unsorted Data</b>: Without sorted data, operations can become inefficient.</li>
+            <li><b>Memory Usage</b>: Trees consume more memory with pointers to child nodes.</li>
+            <li><b>Real-Time Constraints</b>: Maintaining fast updates in dynamic environments is tough.</li>
+        </ul>
+
+        <h3>3. Determining the Most Efficient Approach</h3>
+        <ul>
+            <li><b>Understand the Problem</b>: Analyze input size, nature, and frequency of updates.</li>
+            <li><b>Consider Alternatives</b>: If data is dynamic, balanced BSTs or other structures like heaps may be more efficient.</li>
+            <li><b>Test Performance</b>: Benchmark different approaches to see which performs best based on time and space complexity.</li>
+        </ul>
+    </div>
+
+</body>
+</html>
