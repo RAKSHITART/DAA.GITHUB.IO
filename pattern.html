@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Learning Reflection - Pattern Searching Algorithms</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 2rem;
+            background-color: #f5f5f5;
+            text-align: left;
+        }
+        h1, h2 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        p {
+            color: #333;
+            line-height: 1.6;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Course Learning Reflection - Pattern Searching Algorithms</h1>
+
+    <!-- Brute Force Section -->
+    <div class="section">
+        <h2>Brute Force Algorithm</h2>
+        <p>The Brute Force algorithm searches for a pattern by checking all possible positions in the text one by one. While it is simple, it is inefficient for larger datasets.</p>
+    </div>
+
+    <!-- Boyer-Moore Section -->
+    <div class="section">
+        <h2>Boyer-Moore Algorithm</h2>
+        <p>The Boyer-Moore algorithm improves efficiency by skipping sections of the text based on mismatches between the pattern and the text, making it faster than the Brute Force algorithm in many cases.</p>
+    </div>
+
+    <!-- Knuth-Morris-Pratt (KMP) Section -->
+    <div class="section">
+        <h2>Knuth-Morris-Pratt (KMP) Algorithm</h2>
+        <p>The KMP algorithm uses a preprocessing phase to create a "longest prefix suffix" (LPS) table. This table helps avoid unnecessary comparisons, improving efficiency, especially with repetitive patterns.</p>
+    </div>
+
+    <!-- Rabin-Karp Section -->
+    <div class="section">
+        <h2>Rabin-Karp Algorithm</h2>
+        <p>The Rabin-Karp algorithm uses hashing to compare the pattern with substrings of the text. It is efficient for searching for multiple patterns but can be slower if there are many hash collisions.</p>
+    </div>
+
+    <!-- Summary -->
+    <div class="section">
+        <h2>Pattern Searching Algorithms - My Perspective</h2>
+        <h3>Challenges in Understanding:</h3>
+        <ul>
+            <li><strong>Multiple Algorithms:</strong> There are many algorithms like Naive, KMP, and Rabin-Karp, and it can be confusing to choose or understand their differences.</li>
+            <li><strong>Matching Process:</strong> Grasping how patterns are matched with text and optimizing the process is tricky.</li>
+            <li><strong>Edge Cases:</strong> Handling tricky cases like empty strings or multiple occurrences can be tough.</li>
+        </ul>
+
+        <h3>Challenges in Real-World Applications:</h3>
+        <ul>
+            <li><strong>Efficiency:</strong> Some algorithms (like Naive) are slow for large datasets.</li>
+            <li><strong>Large Texts:</strong> Searching in large texts or databases can be time-consuming.</li>
+            <li><strong>Multiple Patterns:</strong> Searching for several patterns at once can be complex and require more advanced techniques.</li>
+        </ul>
+
+        <h3>How to Choose the Best Approach:</h3>
+        <ul>
+            <li><strong>Small vs. Large Data:</strong> For smaller datasets, simple algorithms like Naive work fine. For large data, use optimized ones like KMP or Rabin-Karp.</li>
+            <li><strong>Pattern Characteristics:</strong> If the pattern has repetitive parts, KMP is good. If random patterns are involved, Rabin-Karp might be better.</li>
+            <li><strong>Time vs. Space:</strong> Weigh the need for speed vs. memory usage.</li>
+        </ul>
+    </div>
+</body>
+</html>
