@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Learning Reflection - Algorithms and Data Structures</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 2rem;
+            background-color: #f5f5f5;
+            text-align: left;
+        }
+        h1, h2 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        p {
+            color: #333;
+            line-height: 1.6;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 2rem;
+        }
+        .code {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Course Learning Reflection</h1>
+    <p>This page contains my reflections on the course. Here's what I learned:</p>
+
+    <!-- DFS and BFS Section -->
+    <div class="section">
+        <h2>DFS and BFS</h2>
+
+        <p><b>Depth First Search (DFS)</b> and <b>Breadth First Search (BFS)</b> are graph traversal algorithms used to explore nodes and edges in a graph. Here's a brief overview:</p>
+
+        <h3>DFS (Depth First Search) Code</h3>
+        <div class="code">
+            <pre>
+#include <iostream>
+using namespace std;
+
+int v = 5;
+int m[10][10] = {{0,1,1,0,0}, {1,0,0,1,1},
+        {1,0,0,0,1}, {0,1,0,0,0}, {0,1,1,0,0}};
+int visited[10];
+
+void dfs(int m[10][10], int v, int source) {
+    visited[source] = 1;
+    for (int i = 0; i < v; i++) {
+        if (m[source][i] == 1 && visited[i] == 0) {
+            cout << i << "\t";
+            dfs(m, v, i);
+        }
+    }
+}
+
+int main() {
+    int source;
+    for (int i = 0; i < v; i++)
+        visited[i] = 0;
+
+    cout << "Enter the source vertex: ";
+    cin >> source;
+
+    cout << "The DFS Traversal is... \n";
+    cout << source << "\t";
+    dfs(m, v, source);
+
+    return 0;
+}
+            </pre>
+        </div>
+
+        <h3>BFS (Breadth First Search) Code</h3>
+        <div class="code">
+            <pre>
+#include <iostream>
+using namespace std;
+
+void bfs(int m[10][10], int v, int source) {
+    int queue[20];
+    int front = 0, rear = 0, u, i;
+    int visited[10];
+
+    for (i = 0; i < v; i++)
+        visited[i] = 0;
+
+    queue[rear] = source;
+    visited[source] = 1;
+
+    cout << "The BFS Traversal is... \n";
+
+    while (front <= rear) {
+        u = queue[front];
+        cout << u << "\t";
+        front++;
+
+        for (i = 0; i < v; i++) {
+            if (m[u][i] == 1 && visited[i] == 0) {
+                visited[i] = 1;
+                rear++;
+                queue[rear] = i;
+            }
+        }
+    }
+}
+
+int main() {
+    int v = 5;
+    int m[10][10] = {{0,1,1,0,0}, {1,0,0,1,1},
+        {1,0,0,0,1}, {0,1,0,0,0}, {0,1,1,0,0}};
+
+    int source;
+    cout << "Enter the source vertex: ";
+    cin >> source;
+
+    bfs(m, v, source);
+
+    return 0;
+}
+            </pre>
+        </div>
+
+        <h3>DFS and BFS: Short Summary</h3>
+        <p><b>1. Challenges in Understanding and Learning:</b></p>
+        <ul>
+            <li><b>DFS:</b> Understanding recursion and backtracking can be tricky.</li>
+            <li><b>BFS:</b> Grasping level-order traversal and managing the queue can be difficult.</li>
+        </ul>
+
+        <p><b>2. Challenges in Real-World Applications:</b></p>
+        <ul>
+            <li><b>DFS:</b> Can lead to stack overflow for deep graphs.</li>
+            <li><b>BFS:</b> High memory usage when the graph is wide.</li>
+            <li>Both require handling cycles to avoid infinite loops.</li>
+        </ul>
+
+        <p><b>3. Determining the Most Efficient Approach:</b></p>
+        <ul>
+            <li><b>DFS:</b> Preferred when deep exploration or backtracking is needed.</li>
+            <li><b>BFS:</b> Best for problems like shortest path in unweighted graphs or level-order exploration.</li>
+            <li>Consider memory constraints, graph size, and problem specifics to decide.</li>
+        </ul>
+    </div>
+</body>
+</html>
