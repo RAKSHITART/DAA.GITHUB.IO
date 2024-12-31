@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Learning Reflection - Sorting Algorithms</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 2rem;
+            background-color: #f5f5f5;
+            text-align: left;
+        }
+        h1, h2 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        p {
+            color: #333;
+            line-height: 1.6;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 2rem;
+        }
+        .code {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Course Learning Reflection - Sorting Algorithms</h1>
+
+    <!-- Bubble Sort Section -->
+    <div class="section">
+        <h2>Bubble Sort</h2>
+        <p>Bubble Sort is a simple comparison-based sorting algorithm where each pair of adjacent elements is compared and swapped if they are in the wrong order, repeatedly passing through the list until it is sorted.</p>
+        <pre class="code">
+ALGORITHM BubbleSort(A[0..n-1])
+for i ← 0 to n - 2 do
+    for j ← 0 to n - 2 - i do
+        if A[j+1] < A[j]
+            swap A[j] and A[j+1]
+        </pre>
+    </div>
+
+    <!-- Selection Sort Section -->
+    <div class="section">
+        <h2>Selection Sort</h2>
+        <p>Selection Sort works by repeatedly finding the minimum element from the unsorted part of the array and swapping it with the first unsorted element.</p>
+        <pre class="code">
+ALGORITHM SelectionSort(A[0..n-1])
+for i ← 0 to n - 2 do
+    min ← i
+    for j ← i + 1 to n - 1 do
+        if A[j] < A[min]
+            min ← j
+    swap A[i] and A[min]
+        </pre>
+    </div>
+
+    <!-- Insertion Sort Section -->
+    <div class="section">
+        <h2>Insertion Sort</h2>
+        <p>Insertion Sort builds the sorted array one element at a time by repeatedly picking the next element and placing it in the correct position within the already sorted part of the array.</p>
+        <pre class="code">
+ALGORITHM InsertionSort(A[0..n-1])
+for i ← 1 to n - 1 do
+    v ← A[i]
+    j ← i - 1
+    while j ≥ 0 and A[j] > v do
+        A[j + 1] ← A[j]
+        j ← j - 1
+    A[j + 1] ← v
+        </pre>
+    </div>
+
+    <!-- Merge Sort Section -->
+    <div class="section">
+        <h2>Merge Sort</h2>
+        <p>Merge Sort is a divide-and-conquer algorithm that divides the array into two halves, recursively sorts them, and then merges the sorted halves into a single sorted array.</p>
+        <pre class="code">
+ALGORITHM MergeSort(A[0..n-1])
+if n > 1
+    copy A[0..n/2 - 1] to B[0..n/2 - 1]
+    copy A[n/2..n-1] to C[0..n/2 - 1]
+    MergeSort(B)
+    MergeSort(C)
+    Merge(B, C, A)
+
+ALGORITHM Merge(B[0..p-1], C[0..q-1], A[0..p+q-1])
+i ← 0
+j ← 0
+k ← 0
+while i < p and j < q do
+    if B[i] <= C[j]
+        A[k] ← B[i]
+        i ← i + 1
+    else
+        A[k] ← C[j]
+        j ← j + 1
+    k ← k + 1
+if i = p
+    copy C[j..q-1] to A[k..p + q - 1]
+else
+    copy B[i..p-1] to A[k..p + q - 1]
+        </pre>
+    </div>
+
+    <!-- Quick Sort Section -->
+    <div class="section">
+        <h2>Quick Sort</h2>
+        <p>Quick Sort is a divide-and-conquer algorithm that works by selecting a pivot element and partitioning the array into two subarrays, recursively sorting the subarrays.</p>
+        <pre class="code">
+ALGORITHM QuickSort(A[l..r])
+if l < r
+    s ← Partition(A[l..r])
+    QuickSort(A[l..s - 1])
+    QuickSort(A[s + 1..r])
+
+ALGORITHM Partition(A[l..r])
+p ← A[l]
+i ← l
+j ← r + 1
+repeat
+    repeat i ← i + 1 until A[i] ≥ p
+    repeat j ← j - 1 until A[j] ≤ p
+    swap(A[i], A[j])
+until i ≥ j
+swap(A[i], A[j])
+swap(A[l], A[j])
+return j
+        </pre>
+    </div>
+
+    <!-- Heap Sort Section -->
+    <div class="section">
+        <h2>Heap Sort</h2>
+        <p>Heap Sort first builds a heap from the input array and then repeatedly extracts the maximum (or minimum) element, rebuilding the heap each time, to produce a sorted array.</p>
+        <pre class="code">
+ALGORITHM HeapBottomUp(H[1..n])
+for i ← n / 2 downto 1 do
+    k ← i
+    v ← H[k]
+    heap ← false
+    while not heap and 2 * k <= n do
+        j ← 2 * k
+        if j < n
+            if H[j] < H[j + 1]
+                j ← j + 1
+        if v >= H[j]
+            heap ← true
+        else
+            H[k] ← H[j]
+            k ← j
+    H[k] ← v
+        </pre>
+    </div>
+
+    <!-- Sorting Algorithms Short Summary -->
+    <div class="section">
+        <h2>Sorting Algorithms - Short Summary</h2>
+        <p><strong>1. Challenges in Understanding and Learning:</strong></p>
+        <ul>
+            <li><strong>Concept Complexity</strong>: Grasping how each sorting algorithm works and their efficiency can be confusing.</li>
+            <li><strong>Choosing the Right One</strong>: It's tricky to know which algorithm to use for specific cases (e.g., small or large datasets).</li>
+        </ul>
+
+        <p><strong>2. Challenges in Real-World Applications:</strong></p>
+        <ul>
+            <li><strong>Large Data</strong>: Sorting huge datasets can be slow and use a lot of memory.</li>
+            <li><strong>Stability</strong>: Some algorithms keep equal elements in their original order, which is important in some cases.</li>
+        </ul>
+
+        <p><strong>3. How to Choose the Most Efficient Approach:</strong></p>
+        <ul>
+            <li><strong>Problem Type</strong>: Consider the size and nature of the data (Quick Sort for large datasets, Merge Sort for external data).</li>
+            <li><strong>Time and Memory</strong>: Balance between time and memory needs. For small datasets, simpler ones like Insertion Sort are fine.</li>
+        </ul>
+
+        <p>In summary: Quick Sort and Merge Sort work well for large datasets, while Insertion Sort and Bubble Sort are good for small ones or simple learning. Choose based on the problem's needs and efficiency.</p>
+    </div>
+</body>
+</html>
